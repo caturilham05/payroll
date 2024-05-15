@@ -3,13 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\Admin\DashboardController;
-use App\Http\Controllers\Admin\ProductsController;
-use App\Http\Controllers\Admin\ProductsTypeController;
-use App\Http\Controllers\Admin\PromoController;
-use App\Http\Controllers\Admin\CreditTermsController;
-use App\Http\Controllers\Admin\ContactsController;
-use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\SettingsController;
+use App\Http\Controllers\Admin\PayrollController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,29 +17,22 @@ use App\Http\Controllers\Admin\SettingsController;
 |
 */
 
-Route::get('/admin', [AuthController::class, 'index'])->middleware('guest');
-Route::post('/admin', [AuthController::class, 'login'])->name('login');
-Route::post('/admin/logout', [AuthController::class, 'logout']);
+Route::get('/', [AuthController::class, 'index'])->middleware('guest');
+Route::post('/', [AuthController::class, 'login'])->name('login');
+Route::post('/logout', [AuthController::class, 'logout']);
 
 Route::middleware(['auth', 'admin'])->group(function () {
-    Route::get('/admin/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
-    Route::get('/admin/products', [ProductsController::class, 'index'])->name('admin.products');
-    Route::get('/admin/products-type', [ProductsTypeController::class, 'index'])->name('admin.products_type');
-    Route::get('/admin/promo', [PromoController::class, 'index'])->name('admin.promo');
-    Route::get('/admin/credit', [CreditTermsController::class, 'index'])->name('admin.credit');
-    Route::get('/admin/contact', [ContactsController::class, 'index'])->name('admin.contact');
-    Route::get('/admin/user', [UserController::class, 'index'])->name('admin.user');
+    Route::get('dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
+    Route::get('payroll', [PayrollController::class, 'index'])->name('admin.payroll');
+    Route::get('payroll/import', [PayrollController::class, 'payroll_import'])->name('admin.payroll_import');
+    Route::post('payroll/import/show', [PayrollController::class, 'payroll_import_show'])->name('admin.payroll_import_show');
+    Route::post('payroll/import/process', [PayrollController::class, 'payroll_import_process'])->name('admin.payroll_import_process');
+    // Route::get('user', [UserController::class, 'index'])->name('admin.user');
 
     /*Settings*/
-    Route::get('/admin/navbars', [SettingsController::class, 'index'])->name('admin.navbars');
-    Route::get('/admin/navbars/create', [SettingsController::class, 'create'])->name('admin.navbars.create');
-    Route::post('/admin/navbars/create', [SettingsController::class, 'store'])->name('admin.navbars.store');
-    Route::put('/admin/navbars/create/{id}', [SettingsController::class, 'update_menu_active'])->name('admin.navbars.update_active');
+    Route::get('navbars', [SettingsController::class, 'index'])->name('admin.navbars');
+    Route::get('navbars/create', [SettingsController::class, 'create'])->name('admin.navbars.create');
+    Route::post('navbars/create', [SettingsController::class, 'store'])->name('admin.navbars.store');
+    Route::put('navbars/create/{id}', [SettingsController::class, 'update_menu_active'])->name('admin.navbars.update_active');
     /*Settings*/
-});
-
-
-
-Route::get('/', function () {
-    return 'Public';
 });
