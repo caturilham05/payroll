@@ -1,10 +1,12 @@
 <form action="{{route('admin.payroll_import_process')}}" method="POST" enctype="multipart/form-data">
   @csrf
+  <input type="hidden" name="excel" value="{{$file}}" class="form-control">
   <div class="card">
     <div class="table">
       <table class="table table-bordered table-striped table-responsive">
         <thead>
           <tr>
+            <td><b>No.</b></td>
             <td><b>Emp No.</b></td>
             <td><b>No. ID</b></td>
             <td><b>NIK</b></td>
@@ -37,6 +39,9 @@
           </tr>
         </thead>
         <tbody>
+          @php
+            $no = 1;
+          @endphp
           @foreach ($excels as $item)
             {{-- <pre>
               @php
@@ -44,6 +49,7 @@
               @endphp
             </pre> --}}
             <tr>
+              <td>{{$no++}}</td>
               <td>{{$item['emp_no']}}<input type="hidden" name="employee_id[]" value="{{$item['emp_no']}}" class="form-control"></td>
               <td>{{$item['no_id']}}<input type="hidden" name="no_id[]" value="{{$item['no_id']}}" class="form-control"></td>
               <td>{{$item['nik']}}<input type="hidden" name="nik[]" value="{{$item['nik']}}" class="form-control"></td>

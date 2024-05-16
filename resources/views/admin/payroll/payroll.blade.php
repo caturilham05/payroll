@@ -27,6 +27,14 @@
           </button>
       </div>
   @endif
+  @if (session()->has('error'))
+      <div class="alert alert-danger alert-dismissible fade show" role="alert">
+          <span>{{ session('error') }}</span>
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+          </button>
+      </div>
+  @endif
 
   <a href="{{route('admin.payroll_import')}}">
     <button type="submit" class="btn btn-primary mb-3"><i class="fas fa-upload"></i>&nbsp;&nbsp; Import Payroll </button>
