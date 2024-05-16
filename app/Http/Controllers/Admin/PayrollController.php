@@ -39,7 +39,21 @@ class PayrollController extends Controller
                 ->addColumn('working_hours', function ($row){
                     return $row->working_hours;
                 })
-                ->rawColumns(['employee_id', 'nik', 'employee_name', 'date', 'working_hours'])
+                ->addColumn('time_in', function ($row){
+                    return $row->time_in;
+                })
+                ->addColumn('time_out', function ($row){
+                    return $row->time_out;
+                })
+                ->rawColumns([
+                    'employee_id',
+                    'nik',
+                    'employee_name',
+                    'date',
+                    'working_hours',
+                    'time_in',
+                    'time_out'
+                ])
                 ->make(true);
         }
 

@@ -48,14 +48,5 @@ class Payroll extends Model
         'mandatory_check_in'  => 'boolean',
         'mandatory_check_out' => 'boolean',
         'date'                => 'datetime:Y-m-d H:i:s',
-        'time_in'             => 'datetime:H:i:s',
-        'time_out'            => 'datetime:H:i:s',
-        'scanned_in'          => 'datetime:H:i:s',
-        'scanned_out'         => 'datetime:H:i:s',
-        'time_in_late'        => 'datetime:H:i:s',
-        'time_out_early'      => 'datetime:H:i:s',
-        'overtime'            => 'datetime:H:i:s',
-        'working_hours_total' => 'datetime:H:i:s',
-        'attendance_total'    => 'datetime:H:i:s',
     ];
 }

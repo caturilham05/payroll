@@ -19,7 +19,7 @@ use App\Http\Controllers\Admin\PayrollController;
 
 Route::get('/', [AuthController::class, 'index'])->middleware('guest');
 Route::post('/', [AuthController::class, 'login'])->name('login');
-Route::post('/logout', [AuthController::class, 'logout']);
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');

@@ -49,6 +49,8 @@
                     <th>Nama</th>
                     <th>Tanggal (Y-m-d)</th>
                     <th>Jam Kerja</th>
+                    <th>Jam Masuk</th>
+                    <th>Jam Pulang</th>
                 </tr>
             </thead>
           </table>
@@ -77,6 +79,8 @@
                 {data: 'employee_name', name: 'payroll.employee_name'},
                 {data: 'date', name: 'payroll.date'},
                 {data: 'working_hours', name: 'payroll.working_hours'},
+                {data: 'time_in', name: 'time_in'},
+                {data: 'time_out', name: 'time_out'},
             ]
         })
     </script>

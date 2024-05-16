@@ -32,7 +32,7 @@
                     </div>
                 </a>
                 <div class="dropdown-divider"></div>
-                <form action="logout" method="post">
+                <form action="{{route('logout')}}" method="post">
                     @csrf
                         <button type="submit" class="btn btn-outline-primary mt-1 mb-1 ml-3"><i class="fas fa-arrow-right"></i> Logout</button>
                 </form>
